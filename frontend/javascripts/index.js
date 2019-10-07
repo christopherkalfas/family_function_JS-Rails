@@ -12,11 +12,30 @@ function fetchChores() {
         .then(parseJSON)
 }
 
+function renderChores(chore) {
+    let h2 = document.createElement('h2')
+    h2.innerHTML = `${chore.name}`
+
+    let p = document.createElement('p')
+    p.setAttribute('class', 'chore-status')
+    p.innerHTML = `Status: ${chore.status}`
+
+    let completeBtn = document.createElement('button')
+    completeBtn.setAttribute('class', 'complete-btn')
+    completeBtn.innerText = 'Completed!'
+    // add event listener to completeBtn
+
+    let divCard = document.createElement('div')
+    divCard.setAttribute('class', 'card')
+    divCard.append(h2, p, completeBtn)
+    choreCollection.append(divCard)
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchChores().then(chores => {
         chores.forEach(chore => {
-            console.log(chore)
+            renderChores(chore)
+            
         })
     })
 })
