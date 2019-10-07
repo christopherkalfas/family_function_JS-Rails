@@ -6,12 +6,35 @@ const parseJSON = response => response.json()
 const addBtn = document.querySelector('#new-chore-btn')
 const choreForm = document.querySelector('.container')
 const choreCollection = document.querySelector("#chore-collection")
+const familyChoresBelongTo = document.getElementById('family-chore-list')
 
 let addChore = false 
 
 function fetchChores() {
     return fetch(CHORES_URL)
         .then(parseJSON)
+}
+
+function postChore(choreData) {
+    let formData = {
+        "name": choreData.name.value,
+        "status": choreData.status = "Incomplete"
+    }
+
+    let configObj = {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    }
+    return fetch(CHORES_URL, configObj)
+        .then(response => response.json())
+        .then((choreObj) => {
+            let newChore = renderChores(choreObj)
+            choreCollection.append(newChore)
+        })
 }
 
 function renderChores(chore) {
@@ -38,7 +61,10 @@ addBtn.addEventListener('click', () => {
     addChore = !addChore
     if (addChore) {
         choreForm.style.display = 'block'
-        // add event listener for postChore
+        choreForm.addEventListener('submit', e => {
+            e.preventDefault()
+            postChore(e.target)
+        })
     } else {
         choreForm.style.display = 'none'
     }

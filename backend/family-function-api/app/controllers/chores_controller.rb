@@ -10,5 +10,18 @@ class ChoresController < ApplicationController
         render json: ChoreSerializer.new(chore).to_serialized_json
       end
 
+      def create 
+        chore = Chore.new(chore_params)
+        chore.save 
+        render json: chore
+      end 
+
+
+      private
+
+      def chore_params
+        params.require(:chore).permit(:name, :status)
+      end 
+
 
 end
