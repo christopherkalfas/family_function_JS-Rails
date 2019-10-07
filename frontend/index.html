@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Family Function</title>
+</head>
+<body>
+    <div id='family-function-header'>
+            <a href="https://fontmeme.com/fonts/planet-n-compact-font/"><img src="https://fontmeme.com/permalink/191007/48bd64ee3423c9dbf22ac9066e6a2b3d.png" alt="planet-n-compact-font" border="0"></a>
+    </div>
+    <br>
+    <h3>The virtual chore assistant built for you and yours.</h3>
+
+    <div class="container">
+        <form class="add-chore-form" style="">
+            <h3> Add a Chore to your To-Do List</h3>
+
+            <input type="text" name="name" value="" placeholder="Enter a chore's name..." class="input-text">
+            <input type="submit" name="submit" value="Add a New Chore" class="submit">
+        
+        </form>
+    </div>
+
+    <p style='text-align:center' >Just try it! You'll love getting this chore out of the way!<button id='new-chore-btn'>Add a new chore!</button></p>
+    
+
+    <div id="chore-collection">
+    </div>
+
+    
+    <script src="javascripts/models/chore.js"></script>
+    <script src="javascripts/models/houseHold.js"></script>
+    <script src="javascripts/globals.js"></script>
+    <script src="javascripts/index.js"></script>
+</body>
+</html>
