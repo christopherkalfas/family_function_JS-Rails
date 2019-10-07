@@ -7,6 +7,8 @@ const addBtn = document.querySelector('#new-chore-btn')
 const choreForm = document.querySelector('.container')
 const choreCollection = document.querySelector("#chore-collection")
 
+let addChore = false 
+
 function fetchChores() {
     return fetch(CHORES_URL)
         .then(parseJSON)
@@ -30,6 +32,17 @@ function renderChores(chore) {
     divCard.append(h2, p, completeBtn)
     choreCollection.append(divCard)
 }
+
+addBtn.addEventListener('click', () => {
+    //hide and seek feature with add new chore form
+    addChore = !addChore
+    if (addChore) {
+        choreForm.style.display = 'block'
+        // add event listener for postChore
+    } else {
+        choreForm.style.display = 'none'
+    }
+})
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchChores().then(chores => {
