@@ -5,10 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-HouseHold.delete_all
 Chore.delete_all
+HouseHold.delete_all
 
 smith = HouseHold.create(name: 'Smith', members: 'John Jane Jack Julia')
+
+jones = HouseHold.create(name: 'Jones', members: "Jerry, Aaron, January, Tommy Lee")
 
 laundry = Chore.create(name: 'Laundry', status:'Incomplete', house_hold:smith)
 

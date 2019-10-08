@@ -16,19 +16,34 @@ html {
   }
 
   .card {
+    border-radius: 15px 50px;
     text-align: center;
     border: grey solid 2px;
-    padding: 2rem;
-    width: 10rem;
-    height: 10rem;
+    padding: 20px;
+    width: 200px;
+    height: 175px;
     display: inline-grid;
     margin: 1rem 2rem;
-    box-shadow: 3px 4px skyblue;
+    box-shadow: 2px 3px skyblue;
     background-color: whitesmoke
   }
 
   .add-chore-form {
     width: 80%
+  }
+
+
+  .complete-btn {
+    background-color: skyblue;
+    border: none;
+    color: white;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    height: auto;
+ 
   }
 
   

@@ -19,6 +19,11 @@
             <h3> Add a Chore to your To-Do List</h3>
 
             <input type="text" name="name" value="" placeholder="Enter a chore's name..." class="input-text">
+           
+            <select id="select">
+                
+            </select>
+
             <input type="submit" name="submit" value="Add a New Chore" class="submit">
         
         </form>
@@ -28,8 +33,14 @@
     
 
     <div id="chore-collection">
-       <h1 id='family-chore-list'></h1>
+       <h1 id='family-chore-list'>To Do:</h1>
     </div>
+
+
+    <div id='completed-chores'>Completed Chores: </div>
+
+
+
 
 
     <script src="javascripts/models/chore.js"></script>
