@@ -8,7 +8,7 @@ html {
 
 .container {
     padding: 1rem;
-    width: stretch;
+    width: auto;
     height: auto;
     display: none;
     background: whitesmoke;
@@ -24,7 +24,7 @@ html {
     height: auto;
     display: inline-grid;
     margin: 1rem 2rem;
-    box-shadow: 2px 3px skyblue;
+    box-shadow: 3px 4px skyblue;
     background-color: whitesmoke
   }
 
@@ -39,15 +39,42 @@ html {
 
   .complete-btn {
     background-color: skyblue;
-    border: none;
-    color: white;
+    border-radius: 3px 8px;
+    color: whitesmoke;
     position: relative;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
+    font-size: 14px;
     height: auto;
- 
+    width: auto;
+  }
+
+  .reset-chore-button {
+    background-color: #9494b8;
+    border-radius: 3px 8px;
+    color: whitesmoke;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+        
+    }
+
+  .delete-chore-btn {
+    background-color: lightsteelblue;
+    border-radius: 3px 8px;
+    color: whitesmoke;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    height: auto;
+    width: auto;
   }
 
   

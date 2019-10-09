@@ -4,14 +4,14 @@ const CHORES_URL = `${BASE_URL}/chores`
 const HOUSE_HOLD_URL = `${BASE_URL}/house_holds`
 
 const parseJSON = response => response.json()
-const addBtn = document.querySelector('#new-chore-btn')
+const addBtn = document.getElementById('new-chore-btn')
 const choreForm = document.querySelector('.container')
 const choreCollection = document.querySelector("#chore-collection")
 const familyChoresBelongTo = document.getElementById('family-chore-list')
 
 
 
-const tryIt = document.getElementById('try-it')
+
 
 let addChore = false 
 
@@ -56,11 +56,13 @@ function renderChores(chore) {
     let h2 = document.createElement('h2')
     h2.innerHTML = `<strong>${chore.name}</strong>`
 
+    
     let h3 = document.createElement('h3')
     h3.innerHTML = '<em>Status: </em>'
     let p = document.createElement('p')
     p.setAttribute('class', 'chore-status')
     p.innerHTML = `${chore.status}`
+
 
     
     let completeBtn = document.createElement('button')
@@ -168,17 +170,20 @@ addBtn.addEventListener('click', () => {
     //hide and seek feature with add new chore form
     addChore = !addChore
     if (addChore) {
+        addBtn.textContent = 'Close'
         choreForm.style.display = 'block'
         choreForm.addEventListener('submit', e => {
             e.preventDefault()
             postChore(e.target)
         })
         
-        tryIt.style.display = "none"
+        
     } else {
+        addBtn.textContent = "Add a New Chore!"
         choreForm.style.display = 'none'
     }
 })
+
 
 function renderDropDownOptions(houseHolds){
     
@@ -204,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
         })
     })
+    addBtn.textContent = 'Add a New Chore'
     
 })
 
