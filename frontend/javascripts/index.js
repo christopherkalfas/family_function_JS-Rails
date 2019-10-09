@@ -9,6 +9,7 @@ const choreForm = document.querySelector('.container')
 const choreCollection = document.querySelector("#chore-collection")
 const familyChoresBelongTo = document.getElementById('family-chore-list')
 const select = document.getElementById('select')
+const tryIt = document.getElementById('try-it')
 
 let addChore = false 
 
@@ -64,15 +65,41 @@ function renderChores(chore) {
     completeBtn.innerText = 'Complete!'
     completeBtn.addEventListener('click', event => completeChoreHandler(event, chore))
 
+    let resetBtn = document.createElement('button')
+    resetBtn.setAttribute('class', 'reset-chore-button')
+    resetBtn.innerText = 'Reset'
+    resetBtn.addEventListener('click', event => resetHandler(event, chore))
+
     let divCard = document.createElement('div')
     divCard.setAttribute('class', 'card')
-    divCard.append(h2, p, completeBtn)
+    divCard.append(h2, p, completeBtn, resetBtn)
     choreCollection.append(divCard)
 }
 
+function resetHandler(event, chore) {
+    let resetStatus = event.target.previousElementSibling.previousElementSibling.innerHTML = 'Incomplete'
+    event.preventDefault()
+
+    fetch(`${CHORES_URL}/${chore.id}`, {
+        method: "PATCH",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'status': resetStatus
+        })
+    })
+    .then(parseJSON)
+    .then(newStatus => {
+        resetStatus
+    })
+    
+}
+
 function completeChoreHandler(event, chore) {
-    console.log(chore)
-    let statusUpdate = event.target.previousElementSibling.innerHTML = `<em>Status:</em> Completed!`
+    
+    let statusUpdate = event.target.previousElementSibling.innerHTML = `Completed!`
     event.preventDefault()
 
     fetch(`${CHORES_URL}/${chore.id}`, {
@@ -92,6 +119,7 @@ function completeChoreHandler(event, chore) {
 }
 
 addBtn.addEventListener('click', () => {
+
     //hide and seek feature with add new chore form
     addChore = !addChore
     if (addChore) {
@@ -100,6 +128,8 @@ addBtn.addEventListener('click', () => {
             e.preventDefault()
             postChore(e.target)
         })
+        
+        tryIt.style.display = "none"
     } else {
         choreForm.style.display = 'none'
     }
