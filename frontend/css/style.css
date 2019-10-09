@@ -16,16 +16,20 @@ html {
   }
 
   .card {
-    border-radius: 15px 50px;
+    border-radius: 15px 40px;
     text-align: center;
     border: grey solid 2px;
     padding: 20px;
     width: 200px;
-    height: 175px;
+    height: auto;
     display: inline-grid;
     margin: 1rem 2rem;
     box-shadow: 2px 3px skyblue;
     background-color: whitesmoke
+  }
+
+  .chore-status {
+      font-size: larger
   }
 
   .add-chore-form {

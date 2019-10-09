@@ -22,7 +22,11 @@ class ChoresController < ApplicationController
         chore = Chore.find_by(id: params[:id])
         chore.update(chore_params)
           render json: chore
-          
+      end 
+
+      def destroy
+        chore = Chore.find(params[:id])
+        chore.destroy
       end 
 
 

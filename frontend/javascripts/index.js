@@ -8,7 +8,9 @@ const addBtn = document.querySelector('#new-chore-btn')
 const choreForm = document.querySelector('.container')
 const choreCollection = document.querySelector("#chore-collection")
 const familyChoresBelongTo = document.getElementById('family-chore-list')
-const select = document.getElementById('select')
+
+
+
 const tryIt = document.getElementById('try-it')
 
 let addChore = false 
@@ -29,8 +31,9 @@ function postChore(choreData) {
     let formData = {
         "name": choreData.name.value,
         "status": choreData.status = "Incomplete",
-        'house_hold_id': choreData.dataset.id
+        'house_hold_id': choreData.querySelector('select').value
     }
+    
 
     let configObj = {
         method: "POST",
@@ -43,8 +46,7 @@ function postChore(choreData) {
     return fetch(CHORES_URL, configObj)
         .then(response => response.json())
         .then((choreObj) => {
-            let newChore = renderChores(choreObj)
-            choreCollection.append(newChore)
+             renderChores(choreObj)
         })
 }
 
@@ -52,32 +54,67 @@ function postChore(choreData) {
 
 function renderChores(chore) {
     let h2 = document.createElement('h2')
-    h2.innerHTML = `${chore.name}`
+    h2.innerHTML = `<strong>${chore.name}</strong>`
 
-
+    let h3 = document.createElement('h3')
+    h3.innerHTML = '<em>Status: </em>'
     let p = document.createElement('p')
     p.setAttribute('class', 'chore-status')
-    p.innerHTML = `<em>Status:</em> ${chore.status}`
-    p.style.color = 'red'
+    p.innerHTML = `${chore.status}`
 
+    
     let completeBtn = document.createElement('button')
     completeBtn.setAttribute('class', 'complete-btn')
     completeBtn.innerText = 'Complete!'
     completeBtn.addEventListener('click', event => completeChoreHandler(event, chore))
-
+    
     let resetBtn = document.createElement('button')
     resetBtn.setAttribute('class', 'reset-chore-button')
     resetBtn.innerText = 'Reset'
+    
     resetBtn.addEventListener('click', event => resetHandler(event, chore))
+    
+    if (p.innerHTML === 'Incomplete'){
+        p.style.color = 'red'
+        resetBtn.style.display = 'none'
+    } else {
+        p.style.color = 'green'
+        completeBtn.style.display = 'none'
+    }
+
+
+    let deleteBtn = document.createElement('button')
+    deleteBtn.setAttribute('class', 'delete-chore-btn')
+    deleteBtn.innerText = 'Delete'
+    deleteBtn.addEventListener('click', event => deleteChoreHandler(event, chore))
 
     let divCard = document.createElement('div')
     divCard.setAttribute('class', 'card')
-    divCard.append(h2, p, completeBtn, resetBtn)
+    divCard.append(h2, h3, p, completeBtn, resetBtn, deleteBtn)
     choreCollection.append(divCard)
 }
 
+
+
+function deleteChoreHandler(event, chore) {
+   event.preventDefault()
+    fetch(`${CHORES_URL}/${chore.id}`,{
+        method: 'DELETE'
+    })
+    .then(() => { delete (event.target.parentNode)
+        
+    })
+}
+
 function resetHandler(event, chore) {
-    let resetStatus = event.target.previousElementSibling.previousElementSibling.innerHTML = 'Incomplete'
+    let resetStatus = event.target.previousElementSibling.previousElementSibling
+    resetStatus.innerHTML = ' Incomplete'
+    resetStatus.style.color = 'red'
+
+    let toggleCompleteBtn = event.target.previousElementSibling
+    toggleCompleteBtn.style.display = 'block'
+
+    let toggleResetBtn = event.target.style.display = 'none'
     event.preventDefault()
 
     fetch(`${CHORES_URL}/${chore.id}`, {
@@ -98,9 +135,17 @@ function resetHandler(event, chore) {
 }
 
 function completeChoreHandler(event, chore) {
-    
-    let statusUpdate = event.target.previousElementSibling.innerHTML = `Completed!`
+   
+    let cardIns = event.target.parentNode
+    cardIns.querySelector('.reset-chore-button').style.display = 'block'
     event.preventDefault()
+
+    let toggleResetBtn = event.target.style.display = 'none'
+    
+
+    let statusUpdate = event.target.previousElementSibling
+    statusUpdate.innerHTML = `Completed!`
+    statusUpdate.style.color = 'green'
 
     fetch(`${CHORES_URL}/${chore.id}`, {
         method: "PATCH",
@@ -153,6 +198,7 @@ addBtn.addEventListener('click', fetchHouseHolds)
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchChores().then(chores => {
+        
         chores.forEach(chore => {
             renderChores(chore)
             
