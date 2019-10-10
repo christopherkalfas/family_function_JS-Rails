@@ -47,7 +47,13 @@ function postChore(choreData) {
         .then(response => response.json())
         .then((choreObj) => {
              renderChores(choreObj)
+             clearForm()
         })
+    
+}
+
+function clearForm() {
+    document.querySelector(".input-text").value = ""
 }
 
 
@@ -103,9 +109,11 @@ function deleteChoreHandler(event, chore) {
     fetch(`${CHORES_URL}/${chore.id}`,{
         method: 'DELETE'
     })
-    .then(() => { delete (event.target.parentNode)
-        
+    .then(() => { 
+        (event.target.parentNode).remove()
     })
+    //debugger
+
 }
 
 function resetHandler(event, chore) {

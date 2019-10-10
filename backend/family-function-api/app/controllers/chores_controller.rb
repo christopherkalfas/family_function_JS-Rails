@@ -27,6 +27,7 @@ class ChoresController < ApplicationController
       def destroy
         chore = Chore.find(params[:id])
         chore.destroy
+        render json: chore
       end 
 
 
