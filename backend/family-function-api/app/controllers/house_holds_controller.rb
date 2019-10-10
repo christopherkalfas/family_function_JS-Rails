@@ -11,6 +11,13 @@ class HouseHoldsController < ApplicationController
         render json: HouseHoldSerializer.new(house_hold).to_serialized_json
     end 
 
+    def create 
+        house_hold = HouseHold.new(house_hold_params)
+        
+        house_hold.save 
+        render json: house_hold 
+      end 
+
     private 
 
     def house_hold_params
