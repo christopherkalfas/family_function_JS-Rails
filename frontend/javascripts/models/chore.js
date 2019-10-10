@@ -7,4 +7,88 @@ class Chore {
         Chore.all.push(this)
     }
 
+    static postChore(choreData) {
+
+        let formData = {
+            "name": choreData.name.value,
+            "status": choreData.status = "Incomplete",
+            'house_hold_id': choreData.querySelector('select').value
+        }
+        
+    
+        let configObj = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }
+        return fetch(CHORES_URL, configObj)
+            .then(response => response.json())
+            .then((choreObj) => {
+                 let newObj = new Chore(choreObj.name, choreObj.status)
+                 newObj.render()
+                 clearForm()
+            })
+        
+
+}
+
+render() {
+    let h2 = document.createElement('h2')
+    h2.innerHTML = `<strong>${this.name}</strong>`
+
+    
+    let h3 = document.createElement('h3')
+    h3.innerHTML = '<em>Status: </em>'
+    let p = document.createElement('p')
+    p.setAttribute('class', 'chore-status')
+    p.innerHTML = `${this.status}`
+
+
+    
+    let completeBtn = document.createElement('button')
+    completeBtn.setAttribute('class', 'complete-btn')
+    completeBtn.innerText = 'Complete!'
+    completeBtn.addEventListener('click', event => completeChoreHandler(event, this))
+    
+    let resetBtn = document.createElement('button')
+    resetBtn.setAttribute('class', 'reset-chore-button')
+    resetBtn.innerText = 'Reset'
+    
+    resetBtn.addEventListener('click', event => resetHandler(event, this))
+    
+    if (p.innerHTML === 'Incomplete'){
+        p.style.color = 'red'
+        resetBtn.style.display = 'none'
+    } else {
+        p.style.color = 'green'
+        completeBtn.style.display = 'none'
+    }
+
+
+    let deleteBtn = document.createElement('button')
+    deleteBtn.setAttribute('class', 'delete-chore-btn')
+    deleteBtn.innerText = 'Delete'
+    deleteBtn.addEventListener('click', event => deleteChoreHandler(event, this))
+
+    let divCard = document.createElement('div')
+    divCard.setAttribute('class', 'card')
+    divCard.append(h2, h3, p, completeBtn, resetBtn, deleteBtn)
+    choreCollection.append(divCard)
+}
+
+
+
+static renderChores(chores) {
+
+    chores.forEach(choreObj => {
+        let newObj = new Chore(choreObj.name, choreObj.status)
+        newObj.render()
+    })
+
+    
+}
+
 }

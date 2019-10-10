@@ -26,31 +26,8 @@ function fetchHouseHolds(){
         .then( houseHolds => renderDropDownOptions(houseHolds))
 }
 
-function postChore(choreData) {
 
-    let formData = {
-        "name": choreData.name.value,
-        "status": choreData.status = "Incomplete",
-        'house_hold_id': choreData.querySelector('select').value
-    }
-    
 
-    let configObj = {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    }
-    return fetch(CHORES_URL, configObj)
-        .then(response => response.json())
-        .then((choreObj) => {
-             renderChores(choreObj)
-             clearForm()
-        })
-    
-}
 
 function clearForm() {
     document.querySelector(".input-text").value = ""
@@ -58,49 +35,7 @@ function clearForm() {
 
 
 
-function renderChores(chore) {
-    let h2 = document.createElement('h2')
-    h2.innerHTML = `<strong>${chore.name}</strong>`
 
-    
-    let h3 = document.createElement('h3')
-    h3.innerHTML = '<em>Status: </em>'
-    let p = document.createElement('p')
-    p.setAttribute('class', 'chore-status')
-    p.innerHTML = `${chore.status}`
-
-
-    
-    let completeBtn = document.createElement('button')
-    completeBtn.setAttribute('class', 'complete-btn')
-    completeBtn.innerText = 'Complete!'
-    completeBtn.addEventListener('click', event => completeChoreHandler(event, chore))
-    
-    let resetBtn = document.createElement('button')
-    resetBtn.setAttribute('class', 'reset-chore-button')
-    resetBtn.innerText = 'Reset'
-    
-    resetBtn.addEventListener('click', event => resetHandler(event, chore))
-    
-    if (p.innerHTML === 'Incomplete'){
-        p.style.color = 'red'
-        resetBtn.style.display = 'none'
-    } else {
-        p.style.color = 'green'
-        completeBtn.style.display = 'none'
-    }
-
-
-    let deleteBtn = document.createElement('button')
-    deleteBtn.setAttribute('class', 'delete-chore-btn')
-    deleteBtn.innerText = 'Delete'
-    deleteBtn.addEventListener('click', event => deleteChoreHandler(event, chore))
-
-    let divCard = document.createElement('div')
-    divCard.setAttribute('class', 'card')
-    divCard.append(h2, h3, p, completeBtn, resetBtn, deleteBtn)
-    choreCollection.append(divCard)
-}
 
 
 
@@ -182,7 +117,7 @@ addBtn.addEventListener('click', () => {
         choreForm.style.display = 'block'
         choreForm.addEventListener('submit', e => {
             e.preventDefault()
-            postChore(e.target)
+            Chore.postChore(e.target)
         })
         
         
@@ -211,11 +146,7 @@ addBtn.addEventListener('click', fetchHouseHolds)
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchChores().then(chores => {
-        
-        chores.forEach(chore => {
-            renderChores(chore)
-            
-        })
+        Chore.renderChores(chores)
     })
     addBtn.textContent = 'Add a New Chore'
     
