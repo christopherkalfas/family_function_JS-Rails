@@ -24,6 +24,15 @@ html {
    opacity: .8;
  } 
 
+ .family-selector {
+  padding: 1rem;
+  width: auto;
+  height: auto;
+  display: none;
+  background: whitesmoke;
+  opacity: .8;
+ }
+
   .card {
     border-radius: 15px 40px;
     text-align: center;
