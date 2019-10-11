@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     addBtn.textContent = 'Add a New Chore'
     addHouseHoldBtn.textContent = "Add a New House Hold"
-    selectHouseHoldBtn.textContent = 'Select Your Family'
+    selectHouseHoldBtn.textContent = 'Select Your House Hold'
     
 })
 
