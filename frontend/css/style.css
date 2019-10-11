@@ -15,6 +15,15 @@ html {
     opacity: .8;
   }
 
+ #house-pop-up {
+   padding: 1rem;
+   width: auto;
+   height: auto;
+   display: none;
+   background: whitesmoke;
+   opacity: .8;
+ } 
+
   .card {
     border-radius: 15px 40px;
     text-align: center;

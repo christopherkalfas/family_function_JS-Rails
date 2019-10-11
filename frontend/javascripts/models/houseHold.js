@@ -10,8 +10,10 @@ class HouseHold {
 
     chores() {
         Chore.all.filter(chore => chore.houseHold.name === this.name)
+        
     }
 
+    
     
     static renderDropDownOptions(houseHolds){
         houseHolds.forEach(houseHold => {

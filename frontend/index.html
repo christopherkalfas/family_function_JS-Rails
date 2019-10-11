@@ -31,13 +31,30 @@
 
     <button id='new-chore-btn' style='text-align:center'></button></p>
     
+    
+    <div id='house-pop-up'>
+        <form class="add-house-hold-form" style="">
+                <h3>Create new House Hold</h3>
+                <label for="house-hold">House Hold Name:</label>
+                <br>
+                <input type="text" name="name" value="" placeholder="Stark..." class="house-hold-input-text">
+                <br>
+                <br>
+                <label for="members">House Hold Members:</label>
+                <br>
+                <input type="text" name="house_hold_members" value="" placeholder="Jon, Bran, Arya, Sansa..." class="house-members-input-text">
+                <br>
+                <br>
+                <input type="submit" name="submit" value="Save House Hold" class="submit">
+            </form>
+        </div>
+        
+        <button id="add-new-family"></button>
 
     <div id="chore-collection">
        <h1 id='family-chore-list'>To Do:</h1>
     </div>
 
-
-    <div id='completed-chores'>Completed Chores: </div>
 
 
 
