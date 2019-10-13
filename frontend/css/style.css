@@ -7,30 +7,48 @@ html {
   }
 
 .container {
-    padding: 1rem;
-    width: auto;
-    height: auto;
-    display: none;
-    background: whitesmoke;
-    opacity: .8;
-  }
-
- #house-pop-up {
-   padding: 1rem;
-   width: auto;
-   height: auto;
-   display: none;
-   background: whitesmoke;
-   opacity: .8;
- } 
-
- .family-selector {
+  box-shadow: 3px 4px skyblue;
+  border-radius: 6px 16px;
   padding: 1rem;
   width: auto;
   height: auto;
   display: none;
   background: whitesmoke;
   opacity: .8;
+  margin: 1rem 2rem;
+  text-shadow: 1px .5px skyblue;
+  color: darkslategray;
+  font-family: Georgia, serif;
+  }
+
+ #house-pop-up {
+  border-radius: 6px 16px;
+  padding: 1rem;
+  width: auto;
+  height: auto;
+  display: none;
+  background: whitesmoke;
+  opacity: .8;
+  box-shadow: 3px 4px skyblue;
+  margin: 1rem 2rem;
+  text-shadow: 1px .5px skyblue;
+  color: darkslategray;
+  font-family: Georgia, serif;
+ } 
+
+ .family-selector {
+  border-radius: 6px 16px;
+  padding: 1rem;
+  width: auto;
+  height: auto;
+  display: none;
+  background: whitesmoke;
+  opacity: .8;
+  box-shadow: 3px 4px skyblue;
+  margin: 1rem 2rem;
+  text-shadow: .5px .5px skyblue;
+  color: darkslategray;
+  font-family: Georgia, serif;
  }
 
   .card {
@@ -43,11 +61,15 @@ html {
     display: inline-grid;
     margin: 1rem 2rem;
     box-shadow: 3px 4px skyblue;
-    background-color: whitesmoke
+    background-color: whitesmoke;
+    font-family: Georgia, serif;
   }
 
+  
+
   .chore-status {
-      font-size: larger
+      font-size: larger;
+      font-family: Georgia, serif;
   }
 
   .add-chore-form {
@@ -66,6 +88,7 @@ html {
     font-size: 14px;
     height: auto;
     width: auto;
+    cursor: pointer;
   }
 
   .reset-chore-button {
@@ -79,6 +102,7 @@ html {
     font-size: 14px;
     height: auto;
     width: auto;
+    cursor: pointer;
         
     }
 
@@ -93,6 +117,85 @@ html {
     font-size: 14px;
     height: auto;
     width: auto;
+    cursor: pointer;
   }
 
+  #add-new-family{
+    border-radius: 3px 8px;
+    border: grey solid 2px;
+    font-size: 24px;
+    height: auto;
+    width: auto;
+    border: #9494b8;
+    background: whitesmoke;
+    box-shadow: 3px 4px skyblue;
+    padding: 12px 28px;
+    margin-left: 50px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    color: darkslategray;
+    font-family: Georgia, serif;
+  }
+
+  #add-new-family button {
+    color: darkslategray;
+    background: whitesmoke;
+  }
+
+  #new-chore-btn {
+    border-radius: 3px 8px;
+    font-size: 24px;
+    height: auto;
+    width: auto;
+    border: #9494b8;
+    border: 2px;
+    background: whitesmoke;
+    box-shadow: 3px 4px skyblue;
+    padding: 12px 28px;
+    margin-left: 50px;
+    margin-top: 15px;
+    cursor: pointer;
+    color: darkslategray;
+    font-family: Georgia, serif;
+  }
+
+  #all-house-options {
+    border-radius: 3px 8px;
+    font-size: 24px;
+    height: auto;
+    width: auto;
+    border: #9494b8;
+    border: 2px;
+    background: whitesmoke;
+    box-shadow: 3px 4px skyblue;
+    padding: 12px 28px;
+    margin-left: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+    color: darkslategray;
+    font-family: Georgia, serif;
+  }
+
+  #tag-line {
+    text-align: center;
+    text-shadow: 2px 2px navy;
+    color: aqua;
+    font-family: Georgia, serif;
+    opacity: .5;
+    font-size: 24px;
+  }
+
+  #family-chore-list {
+    text-align: center;
+    text-shadow: 2px 2px navy;
+    color: aqua;
+    font-family: Georgia, serif;
+    opacity: .5;
+    font-size: 28px;
+  }
+
+  #submit-form {
+    border-radius: 3px 8px;
+  }
   

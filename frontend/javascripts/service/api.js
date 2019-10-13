@@ -11,7 +11,6 @@ class Api {
     static fetchHouseHolds(){
         return fetch(Api.baseUrl + '/house_holds')
             .then(parseJSON)
-            //.then( houseHolds => HouseHold.renderDropDownOptions(houseHolds))
     }
 
     

@@ -16,9 +16,5 @@ class ChoreSerializer
         @chore.to_json(options)
     end
        
-    #   def to_serialized_json
-    #     @chore.to_json(:include => {
-    #       :house_hold => {:only => [:name, :members]},
-    #     }, :except => [:updated_at])
-    #   end
+   
 end 
