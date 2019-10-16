@@ -8,12 +8,12 @@
 Chore.delete_all
 HouseHold.delete_all
 
-smith = HouseHold.create(name: 'Smith', members: 'John Jane Jack Julia')
+# smith = HouseHold.create(name: 'Smith', members: 'John Jane Jack Julia')
 
-jones = HouseHold.create(name: 'Jones', members: "Jerry, Aaron, January, Tommy Lee")
+# jones = HouseHold.create(name: 'Jones', members: "Jerry, Aaron, January, Tommy Lee")
 
-laundry = Chore.create(name: 'Laundry', status:'Incomplete', house_hold:smith)
+# laundry = Chore.create(name: 'Laundry', status:'Incomplete', house_hold:smith)
 
-garbage = Chore.create(name: 'Garbage', status:'Incomplete', house_hold:smith)
+# garbage = Chore.create(name: 'Garbage', status:'Incomplete', house_hold:smith)
 
-dishes = Chore.create(name: 'Dishes', status:'Incomplete', house_hold:smith)
+# dishes = Chore.create(name: 'Dishes', status:'Incomplete', house_hold:smith)

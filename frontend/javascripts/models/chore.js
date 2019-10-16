@@ -28,10 +28,9 @@ class Chore {
         return fetch(Api.CHORES_URL, configObj)
             .then(response => response.json())
             .then((choreObj) => {
-                 let newObj = new Chore(choreObj.name, choreObj.status, choreObj.id)
-                 newObj.render()
-                 clearForm()
-                 
+                let newObj = new Chore(choreObj.name, choreObj.status, choreObj.id)
+                newObj.render()
+                clearForm() 
             })
         
 
@@ -79,7 +78,7 @@ class Chore {
 
             let divCard = document.createElement('div')
             divCard.setAttribute('class', 'card')
-            divCard.setAttribute('id', this.id)
+            divCard.setAttribute('id', `${this.id}`)
             divCard.append(h2, h3, p, completeBtn, resetBtn, deleteBtn)
             choreCollection.append(divCard)
         }
@@ -123,7 +122,7 @@ class Chore {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    'status': statusUpdate
+                    'status': statusUpdate.textContent
                 })
             })
             .then(parseJSON)
@@ -150,7 +149,7 @@ class Chore {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    'status': resetStatus
+                    'status': resetStatus.textContent
                 })
             })
             .then(parseJSON)

@@ -8,7 +8,7 @@ class HouseHoldSerializer
         options = {
             include: {
                 chores: {
-                    only: [:name, :status, :house_hold_id]
+                    only: [:name, :status, :id, :house_hold_id]
                 }
             },      
             except: [:updated_at],

@@ -21,11 +21,11 @@ function clearNewChore() {
 addHouseHoldBtn.addEventListener('click', () => {
     addHouseHold = !addHouseHold
     if (addHouseHold){
-       addHouseHoldBtn.textContent = "Close"
-       housePopUp.style.display = 'block'
-       housePopUp.addEventListener('submit', e => {
-           e.preventDefault()
-           HouseHold.postHouseHold(e.target)
+        addHouseHoldBtn.textContent = "Close"
+        housePopUp.style.display = 'block'
+        housePopUp.addEventListener('submit', e => {
+            e.preventDefault()
+            HouseHold.postHouseHold(e.target)
        })
     } else {
         addHouseHoldBtn.textContent = "Add a New House Hold"
@@ -37,15 +37,24 @@ addHouseHoldBtn.addEventListener('click', () => {
 selectHouseHoldBtn.addEventListener('click', () => {
     selectHouse = !selectHouse
     if(selectHouse) {
-       selectHouseHoldBtn.textContent= 'Close'
-       selectForm.style.display = 'block'
-       selectForm.addEventListener('submit', e => {
-        e.preventDefault()
-        let familyId = e.target.querySelector('#family-select').value
-        let chosenFamily = HouseHold.all.find(chosenFamily => familyId == chosenFamily.id)
-        clearChoreDivs()
-        chosenFamily.renderChores()
-       })
+        selectHouseHoldBtn.textContent= 'Close'
+        selectForm.style.display = 'block'
+        selectForm.addEventListener('submit', e => {
+            e.preventDefault()
+            let familyId = e.target.querySelector('#family-select').value
+            Api.fetchHouseHolds().then(houseHolds => {
+            houseHolds.forEach(houseHold => {
+
+                let hh = new HouseHold(houseHold.name, houseHold.members, houseHold.id)
+                houseHold.chores.forEach(chore => {
+                hh.addChore(chore)
+                })
+            })
+            let chosenFamily = HouseHold.all.find(chosenFamily => familyId == chosenFamily.id)
+            clearChoreDivs()
+            chosenFamily.renderChores()
+            })
+        })
     } else {
         selectHouseHoldBtn.textContent = "Select Your Family"
         selectForm.style.display = 'none'
