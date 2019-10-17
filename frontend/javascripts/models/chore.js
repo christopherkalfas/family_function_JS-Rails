@@ -28,8 +28,11 @@ class Chore {
         return fetch(Api.CHORES_URL, configObj)
             .then(response => response.json())
             .then((choreObj) => {
+                let houseHold = HouseHold.all.find(chosenFamily => choreObj.house_hold_id == chosenFamily.id)
                 let newObj = new Chore(choreObj.name, choreObj.status, choreObj.id)
-                newObj.render()
+                houseHold.chores.push(newObj)
+                clearChoreDivs()
+                houseHold.renderChores()
                 clearForm() 
             })
         
@@ -91,6 +94,9 @@ class Chore {
                 newObj.render()
             })
         }
+
+        ///when rendering chores 'sort' the chore A-Z
+
 
         deleteChoreHandler() {
             event.preventDefault()

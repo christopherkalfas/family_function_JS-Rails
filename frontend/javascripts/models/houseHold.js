@@ -18,8 +18,8 @@ class HouseHold {
     
 
     renderChores() {
-        this.chores.forEach(choreObj => {
-            //debugger
+        let familySortedChores = this.chores.sort((a,b)=>(a.name > b.name) ? 1 : -1)
+        familySortedChores.forEach(choreObj => {
             choreObj.render()
         })
     }
@@ -79,4 +79,6 @@ class HouseHold {
 
 
 }
+
+
 
